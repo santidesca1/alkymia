@@ -4,6 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Al KYMIA — Perfumes Árabes de Lujo</title>
+  <!-- Plausible.io (opcional) -->
+  <script defer data-domain="TU-DOMINIO" src="https://plausible.io/js/script.js"></script>
+  <meta name="description" content="Al KYMIA · Perfumería árabe de lujo en Argentina. Envíos a todo el país. Lattafa, Armaf, Afnan, Rasasi y más.">
+  <link rel="icon" href="img/favicon.png">
+  <meta property="og:title" content="Al KYMIA — Perfumes Árabes de Lujo">
+  <meta property="og:description" content="Selección curada. Estelas opulentas. Proyección real.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://TU-SITIO.netlify.app/">
+  <meta property="og:image" content="https://TU-SITIO.netlify.app/img/banner1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
@@ -57,26 +67,25 @@
       <h2 class="title-lg">Colección Al KYMIA</h2>
       <p>Filtrá por marca, familia, género, precio u orden.</p>
     </div>
-
-    <div class="filters">
-      <select id="fBrand"><option value="">Marca</option></select>
-      <select id="fFamily"><option value="">Familia</option></select>
-      <select id="fGender"><option value="">Género</option></select>
-      <select id="fPrice">
-        <option value="">Precio</option>
-        <option value="1">hasta $40k</option>
-        <option value="2">$40k–$60k</option>
-        <option value="3">más de $60k</option>
-      </select>
-      <select id="fSort">
-        <option value="name-asc">A–Z</option>
-        <option value="price-asc">Precio ↑</option>
-        <option value="price-desc">Precio ↓</option>
-        <option value="brand-asc">Marca</option>
-      </select>
-    </div>
-
-    <section id="grid" class="grid"></section>
+   <div class="filters">
+  <select id="fBrand"><option value="">Marca</option></select>
+  <select id="fFamily"><option value="">Familia</option></select>
+  <select id="fPrice">
+    <option value="">Precio</option>
+    <option value="1">hasta $40k</option>
+    <option value="2">$40k–$60k</option>
+    <option value="3">más de $60k</option>
+  </select>
+  <select id="fSort">
+    <option value="name-asc">A–Z</option>
+    <option value="price-asc">Precio ↑</option>
+    <option value="price-desc">Precio ↓</option>
+    <option value="brand-asc">Marca</option>
+  </select>
+  <!-- Buscador -->
+ <input id="fSearch" class="filter-input" placeholder="Buscar perfumes, marcas, notas…" />
+  </div>
+  <section id="grid" class="grid"></section>
   </section>
 
   <!-- BANNER AMBIENTACIÓN -->
@@ -167,5 +176,17 @@
     <img class="lightbox-content" id="lightbox-img" alt="">
     <div id="lightbox-caption"></div>
   </div>
+
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"Al KYMIA",
+  "url":"https://alkymia.netlify.app/",
+  "image":"https://alkymia.netlify.app/img/banner1.jpg",
+  "telephone":"+54 351 364 6356",
+  "address": { "@type":"PostalAddress", "addressCountry":"AR" }
+}
+</script>
 </body>
 </html>

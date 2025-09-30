@@ -220,19 +220,573 @@ const RAW = [
   {brand:"Rasasi", name:"Hawas Fire", usd:32.00},
 ];
 
-// Construcción del catálogo final
+// Notas por perfume 
+const NOTES = {
+// --- AFNAN ---
+"turathi blue": {
+  family: "Aromático amaderado",
+  top:  ["Toronja", "Bergamota", "Jengibre"],
+  mid:  ["Incienso", "Lavanda", "Geranio"],
+  base: ["Cedro", "Sándalo", "Ambroxan", "Musk"]
+},
+"9 pm": {
+  family: "Ámbar vainilla",
+  top:  ["Manzana", "Canela", "Lavanda", "Bergamota"],
+  mid:  ["Azahar", "Lirio de los valles"],
+  base: ["Vainilla", "Haba tonka", "Ámbar", "Patchouli"]
+},
+"9 am dive": {
+  family: "Aromático acuático",
+  top:  ["Limón", "Menta", "Jengibre"],
+  mid:  ["Lavanda", "Geranio", "Notas marinas"],
+  base: ["Ambroxan", "Cedro", "Musk"]
+},
+"9 pm pour femme": {
+  family: "Floral gourmand",
+  top:  ["Mandarina", "Frambuesa", "Pera"],
+  mid:  ["Jazmín", "Rosa", "Peonía"],
+  base: ["Vainilla", "Praliné", "Sándalo", "Musk"]
+},
+"9 pm rebel": {
+  family: "Oriental especiado",
+  top:  ["Cardamomo", "Pimienta rosa", "Bergamota"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Vainilla", "Ámbar", "Maderas", "Haba tonka"]
+},
+"9 pm elixir": {
+  family: "Ámbar especiado",
+  top:  ["Bergamota", "Manzana", "Canela"],
+  mid:  ["Lavanda", "Cardamomo", "Azahar"],
+  base: ["Vainilla", "Patchouli", "Ámbar", "Maderas"]
+},
+"supremacy not only": {
+  family: "Chipre frutal",
+  top:  ["Piña", "Bergamota", "Grosella negra", "Manzana"],
+  mid:  ["Abedul", "Jazmín", "Rosa", "Patchouli"],
+  base: ["Musk", "Musgo de roble", "Ámbar gris", "Vainilla"]
+},
+ // --- AL HARAMAIN ---
+"amber oud gold edition 120 ml": {
+  family: "Ámbar vainilla",
+  top:  ["Bergamota", "Notas verdes"],
+  mid:  ["Jazmín", "Sándalo", "Maderas"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+"amber oud gold edition 60 ml": {
+  family: "Ámbar vainilla",
+  top:  ["Bergamota", "Notas verdes"],
+  mid:  ["Jazmín", "Sándalo", "Maderas"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+"amber oud rouge": {
+  family: "Ámbar floral",
+  top:  ["Azafrán", "Naranja"],
+  mid:  ["Jazmín", "Notas ambarinas"],
+  base: ["Resinas", "Maderas claras", "Ámbar gris"]
+},
+"l’aventure intense": {
+  family: "Chipre frutal",
+  top:  ["Limón", "Bergamota"],
+  mid:  ["Jazmín", "Notas amaderadas"],
+  base: ["Musk", "Pachuli", "Ámbar"]
+},
+"detour noir": {
+  family: "Oriental especiado",
+  top:  ["Bergamota", "Ciprés"],
+  mid:  ["Cardamomo", "Lavanda", "Geranio"],
+  base: ["Vainilla", "Vetiver", "Ambroxan"]
+},
+"aqua dubai": {
+  family: "Aromático acuático",
+  top:  ["Menta", "Limón", "Notas marinas"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ambroxan", "Maderas", "Musk"]
+},
+"private edition": {
+  family: "Amaderado especiado",
+  top:  ["Canela", "Cardamomo"],
+  mid:  ["Lavanda", "Cedro"],
+  base: ["Ámbar", "Maderas", "Vainilla"]
+},
+"dubai night": {
+  family: "Oriental especiado",
+  top:  ["Pimienta rosa", "Pomelo"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ámbar gris", "Vetiver", "Maderas oscuras"]
+},
+  // --- ARMAF ---
+"club de nuit intense man 105ml": {
+  family: "Chipre frutal",
+  top:  ["Limón", "Piña", "Bergamota", "Grosella negra", "Manzana"],
+  mid:  ["Abedul", "Jazmín", "Rosa"],
+  base: ["Musk", "Ámbar gris", "Vainilla", "Patchouli"]
+},
+"club de nuit intense man 200ml": {
+  family: "Chipre frutal",
+  top:  ["Limón", "Piña", "Bergamota", "Grosella negra", "Manzana"],
+  mid:  ["Abedul", "Jazmín", "Rosa"],
+  base: ["Musk", "Ámbar gris", "Vainilla", "Patchouli"]
+},
+"club de nuit iconic": {
+  family: "Aromático especiado",
+  top:  ["Toronja", "Menta", "Limón"],
+  mid:  ["Jengibre", "Nuez moscada", "Lavanda"],
+  base: ["Incienso", "Cedro", "Patchouli"]
+},
+"club de nuit oud parfum": {
+  family: "Amaderado oriental",
+  top:  ["Azafrán", "Rosa"],
+  mid:  ["Maderas de oud", "Ámbar"],
+  base: ["Vainilla", "Resinas", "Musk"]
+},
+"club de nuit precieux": {
+  family: "Floral frutal",
+  top:  ["Durazno", "Grosella negra"],
+  mid:  ["Jazmín", "Rosa"],
+  base: ["Maderas blancas", "Musk", "Vainilla"]
+},
+"club de nuit milestone": {
+  family: "Acuático floral",
+  top:  ["Frutas marinas", "Grosella negra"],
+  mid:  ["Violeta", "Sándalo"],
+  base: ["Almizcle blanco", "Ambroxan", "Vetiver"]
+},
+"club de nuit imperiale": {
+  family: "Oriental floral",
+  top:  ["Lichi", "Nuez moscada", "Bergamota"],
+  mid:  ["Peonía", "Almizcle", "Rosa turca"],
+  base: ["Cashmeran", "Vainilla", "Incienso"]
+},
+"club de nuit sillage": {
+  family: "Floral almizclado",
+  top:  ["Bergamota", "Limón", "Violeta", "Jengibre"],
+  mid:  ["Rosa", "Jazmín", "Iris"],
+  base: ["Ambroxan", "Maderas", "Musk", "Cedro"]
+},
+"club de nuit maleka": {
+  family: "Ámbar floral",
+  top:  ["Mandarina", "Frambuesa"],
+  mid:  ["Rosa", "Iris", "Jazmín"],
+  base: ["Vainilla", "Ámbar gris", "Musk"]
+},
+"club de nuit untold": {
+  family: "Chipre floral",
+  top:  ["Rosa", "Azafrán"],
+  mid:  ["Jazmín", "Notas amaderadas"],
+  base: ["Ámbar gris", "Musk"]
+},
+"club de nuit urban man elixir": {
+  family: "Aromático especiado",
+  top:  ["Bergamota", "Pimienta rosa"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ambroxan", "Maderas", "Patchouli"]
+},
+"club de nuit woman": {
+  family: "Floral frutal",
+  top:  ["Naranja", "Durazno", "Toronja"],
+  mid:  ["Rosa", "Jazmín", "Lichi"],
+  base: ["Vainilla", "Vetiver", "Musk"]
+},
+
+// --- ARMAF Odyssey ---
+"odyssey mandarin sky": {
+  family: "Frutal gourmand",
+  top:  ["Mandarina", "Frutos rojos"],
+  mid:  ["Caramelo", "Canela"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+"odyssey homme white edition": {
+  family: "Aromático especiado",
+  top:  ["Pomelo", "Bergamota"],
+  mid:  ["Lavanda", "Cardamomo"],
+  base: ["Vainilla", "Maderas", "Ámbar"]
+},
+"odyssey candee": {
+  family: "Dulce gourmand",
+  top:  ["Caramelo", "Algodón de azúcar"],
+  mid:  ["Frutas confitadas"],
+  base: ["Vainilla", "Musk"]
+},
+"odyssey mega": {
+  family: "Aromático fresco",
+  top:  ["Bergamota", "Toronja"],
+  mid:  ["Lavanda", "Especias suaves"],
+  base: ["Maderas claras", "Musk"]
+},
+"odyssey spectra": {
+  family: "Cítrico aromático",
+  top:  ["Limón", "Mandarina"],
+  mid:  ["Notas marinas", "Geranio"],
+  base: ["Ambroxan", "Maderas", "Musk"]
+},
+"odyssey limoni": {
+  family: "Cítrico aromático",
+  top:  ["Limón siciliano", "Toronja"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Cedro", "Vetiver", "Musk"]
+},
+"odyssey homme black": {
+  family: "Amaderado especiado",
+  top:  ["Pimienta negra", "Pomelo"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Cedro", "Ámbar", "Musk"]
+},
+"odyssey aqua": {
+  family: "Aromático acuático",
+  top:  ["Limón", "Notas marinas"],
+  mid:  ["Lavanda", "Menta"],
+  base: ["Ambroxan", "Cedro", "Musk"]
+},
+"odyssey tyrant": {
+  family: "Amaderado especiado",
+  top:  ["Naranja amarga", "Pimienta"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Vetiver", "Ámbar gris", "Maderas"]
+},
+"odyssey aoud": {
+  family: "Amaderado oriental",
+  top:  ["Azafrán", "Frambuesa"],
+  mid:  ["Rosa", "Oud"],
+  base: ["Ambar gris", "Musk", "Resinas"]
+},
+"odyssey wild one": {
+  family: "Frutal especiado",
+  top:  ["Manzana roja", "Canela"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Vainilla", "Maderas", "Musk"]
+},
+"odyssey dubai chocolate": {
+  family: "Gourmand dulce",
+  top:  ["Chocolate", "Cacao"],
+  mid:  ["Praliné", "Caramelo"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+// --- BHARARA ---
+"bharara king parfum 150 ml": {
+  family: "Ámbar especiado",
+  top:  ["Canela", "Cardamomo", "Pomelo"],
+  mid:  ["Lavanda", "Praliné"],
+  base: ["Vainilla", "Ámbar", "Maderas"]
+},
+"bharara king parfum 100 ml": {
+  family: "Ámbar especiado",
+  top:  ["Canela", "Cardamomo", "Pomelo"],
+  mid:  ["Lavanda", "Praliné"],
+  base: ["Vainilla", "Ámbar", "Maderas"]
+},
+"bharara rose": {
+  family: "Floral frutal",
+  top:  ["Mandarina", "Frambuesa"],
+  mid:  ["Rosa", "Iris", "Jazmín"],
+  base: ["Vainilla", "Ámbar gris", "Musk"]
+},
+"bharara onyx": {
+  family: "Amaderado aromático",
+  top:  ["Bergamota", "Pimienta negra"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Cedro", "Vetiver", "Ámbar"]
+},
+"bharara queen": {
+  family: "Ámbar floral",
+  top:  ["Durazno", "Frambuesa"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Musk", "Ámbar"]
+},
+
+// --- LATTAFA ---
+"fakhar men": {
+  family: "Aromático especiado",
+  top:  ["Limón", "Jengibre"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Maderas", "Musk", "Ámbar"]
+},
+"khamrah": {
+  family: "Gourmand especiado",
+  top:  ["Canela", "Nuez moscada"],
+  mid:  ["Praliné", "Dátil", "Mahón"],
+  base: ["Vainilla", "Amberwood", "Haba tonka"]
+},
+"khamrah qahwa": {
+  family: "Gourmand café",
+  top:  ["Café", "Especias cálidas"],
+  mid:  ["Praliné", "Caramelo"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+"mayar intense": {
+  family: "Floral gourmand",
+  top:  ["Frutos rojos", "Mandarina"],
+  mid:  ["Orquídea", "Jazmín"],
+  base: ["Vainilla", "Sándalo", "Musk"]
+},
+"yara": {
+  family: "Floral gourmand",
+  top:  ["Mandarina", "Heliotropo"],
+  mid:  ["Orquídea", "Gourmand"],
+  base: ["Vainilla", "Sándalo", "Musk"]
+},
+"yara rose": {
+  family: "Floral afrutado",
+  top:  ["Frambuesa", "Toronja"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Musk", "Sándalo", "Ámbar"]
+},
+"yara tous": {
+  family: "Floral dulce",
+  top:  ["Durazno", "Heliotropo"],
+  mid:  ["Jazmín", "Rosa"],
+  base: ["Vainilla", "Musk", "Sándalo"]
+},
+"yara moi": {
+  family: "Ámbar floral",
+  top:  ["Mandarina", "Grosella"],
+  mid:  ["Jazmín", "Orquídea"],
+  base: ["Ámbar", "Musk", "Vainilla"]
+},
+"kit yara collection": {
+  family: "Floral gourmand",
+  top:  ["Frutos rojos", "Mandarina"],
+  mid:  ["Jazmín", "Orquídea"],
+  base: ["Vainilla", "Musk", "Sándalo"]
+},
+"nebras": {
+  family: "Gourmand dulce",
+  top:  ["Cereza", "Frambuesa"],
+  mid:  ["Praliné", "Caramelo"],
+  base: ["Vainilla", "Musk"]
+},
+"emaan": {
+  family: "Floral fresco",
+  top:  ["Limón", "Mandarina"],
+  mid:  ["Jazmín", "Rosa"],
+  base: ["Musk", "Sándalo"]
+},
+"victoria": {
+  family: "Floral frutal",
+  top:  ["Manzana", "Pera"],
+  mid:  ["Rosa", "Freesia"],
+  base: ["Musk", "Vainilla"]
+},
+
+// --- MAISON ALHAMBRA ---
+"salvo intense": {
+  family: "Aromático amaderado",
+  top:  ["Bergamota", "Pimienta"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ambroxan", "Cedro", "Ládano"]
+},
+"salvo edp": {
+  family: "Aromático fresco",
+  top:  ["Bergamota", "Toronja"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ambroxan", "Vetiver", "Musk"]
+},
+"salvo elixir": {
+  family: "Amaderado especiado",
+  top:  ["Canela", "Cardamomo"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ámbar", "Vainilla", "Musk"]
+},
+"la voie": {
+  family: "Aromático herbal",
+  top:  ["Bergamota", "Menta"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Cedro", "Vetiver", "Musk"]
+},
+// --- MAISON ALHAMBRA (resto) ---
+"la rouge baroque": {
+  family: "Ámbar floral",
+  top:  ["Azafrán", "Naranja amarga"],
+  mid:  ["Jazmín", "Amberwood"],
+  base: ["Resinas", "Ámbar gris", "Cedro"]
+},
+"la rouge baroque extreme": {
+  family: "Ámbar floral",
+  top:  ["Azafrán", "Almendra amarga"],
+  mid:  ["Jazmín", "Amberwood"],
+  base: ["Resinas", "Ámbar", "Musk", "Cedro"]
+},
+"delilah pour femme": {
+  family: "Floral afrutado",
+  top:  ["Lichi", "Ruibarbo", "Bergamota"],
+  mid:  ["Rosa turca", "Peonía", "Vainilla ligera"],
+  base: ["Cashmeran", "Musk", "Incienso"]
+},
+"yeah": {
+  family: "Aromático amaderado",
+  top:  ["Bergamota", "Manzana", "Jengibre"],
+  mid:  ["Salvia", "Geranio", "Enebro"],
+  base: ["Amberwood", "Cedro", "Haba tonka"]
+},
+"reyna": {
+  family: "Floral gourmand",
+  top:  ["Pera", "Bergamota"],
+  mid:  ["Rosa", "Jazmín", "Flor de azahar"],
+  base: ["Vainilla", "Musk", "Ámbar"]
+},
+"so candid": {
+  family: "Floral blanco",
+  top:  ["Frambuesa", "Naranja"],
+  mid:  ["Tuberosa", "Jazmín", "Azahar"],
+  base: ["Leche", "Vainilla", "Musk"]
+},
+"your touch intense (hombre)": {
+  family: "Aromático amaderado",
+  top:  ["Bergamota", "Cardamomo"],
+  mid:  ["Lavanda", "Geranio", "Salvia"],
+  base: ["Ambroxan", "Cedro", "Haba tonka"]
+},
+"your touch amber": {
+  family: "Ámbar especiado",
+  top:  ["Cardamomo", "Canela"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ámbar", "Vainilla", "Musk"]
+},
+"your touch for women": {
+  family: "Floral dulce",
+  top:  ["Pera", "Bergamota"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Musk", "Sándalo"]
+},
+"glacier bella": {
+  family: "Floral fresco",
+  top:  ["Limón", "Pera"],
+  mid:  ["Peonía", "Jazmín"],
+  base: ["Musk", "Cedro"]
+},
+"glacier le noir": {
+  family: "Amaderado aromático",
+  top:  ["Pimienta negra", "Lavanda"],
+  mid:  ["Geranio", "Salvia"],
+  base: ["Cedro", "Patchouli", "Haba tonka"]
+},
+"glacier bold": {
+  family: "Cítrico acuático",
+  top:  ["Pomelo", "Mandarina"],
+  mid:  ["Notas marinas", "Lavanda"],
+  base: ["Ambroxan", "Maderas claras", "Musk"]
+},
+"philos opus noir": {
+  family: "Ambarado especiado",
+  top:  ["Pimienta", "Bergamota"],
+  mid:  ["Incienso", "Cuero suave"],
+  base: ["Ámbar", "Maderas oscuras", "Musk"]
+},
+"philos pura": {
+  family: "Cítrico almizclado",
+  top:  ["Bergamota", "Neroli"],
+  mid:  ["Flor blanca", "Té"],
+  base: ["Musk", "Ámbar claro"]
+},
+"philos rosso": {
+  family: "Ámbar floral",
+  top:  ["Frambuesa", "Cítricos"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Musk", "Ámbar"]
+},
+"dark door sport": {
+  family: "Aromático fresco",
+  top:  ["Pomelo", "Menta", "Jengibre"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Cedro", "Vetiver", "Musk"]
+},
+"pacific blue": {
+  family: "Acuático aromático",
+  top:  ["Bergamota", "Notas marinas"],
+  mid:  ["Romero", "Ciprés"],
+  base: ["Ambroxan", "Patchouli", "Musk"]
+},
+"sceptre malachite": {
+  family: "Verde amaderado",
+  top:  ["Menta", "Albahaca"],
+  mid:  ["Hoja de violeta", "Salvia"],
+  base: ["Vetiver", "Musgo de roble", "Cedro"]
+},
+"la vivacite": {
+  family: "Cítrico floral",
+  top:  ["Bergamota", "Neroli"],
+  mid:  ["Jazmín", "Flor de azahar"],
+  base: ["Musk", "Cedro", "Ámbar"]
+},
+"jorge di profumo": {
+  family: "Aromático marino",
+  top:  ["Bergamota", "Notas marinas"],
+  mid:  ["Incienso", "Romero"],
+  base: ["Patchouli", "Ámbar gris", "Maderas"]
+},
+"jorge deep blue": {
+  family: "Aromático acuático",
+  top:  ["Mandarina verde", "Bergamota"],
+  mid:  ["Ciprés", "Lavandin", "Romero"],
+  base: ["Ambroxan", "Patchouli", "Musk"]
+},
+
+// --- RASASI ---
+"hawas masc": {
+  family: "Aromático acuático",
+  top:  ["Manzana verde", "Bergamota", "Canela", "Limón"],
+  mid:  ["Ciruela", "Cardamomo", "Azahar"],
+  base: ["Ámbar gris", "Musk", "Driftwood", "Patchouli"]
+},
+"hawas ice": {
+  family: "Aromático fresco",
+  top:  ["Bergamota", "Pomelo", "Menta"],
+  mid:  ["Lavanda", "Cardamomo", "Notas acuáticas"],
+  base: ["Ámbar gris", "Vetiver", "Maderas claras"]
+},
+"hawas elixir": {
+  family: "Ámbar especiado",
+  top:  ["Pimienta negra", "Canela"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Ámbar", "Vainilla", "Maderas orientales"]
+},
+"hawas fire": {
+  family: "Oriental especiado",
+  top:  ["Bergamota", "Pimienta rosa"],
+  mid:  ["Lavanda", "Incienso"],
+  base: ["Ámbar gris", "Maderas", "Resinas balsámicas"]
+},
+
+// --- ORIENTICA ---
+"amber rouge 150ml": {
+  family: "Ámbar floral",
+  top:  ["Azafrán", "Naranja amarga"],
+  mid:  ["Jazmín", "Amberwood"],
+  base: ["Resinas", "Maderas claras", "Ámbar gris"]
+},
+"amber rouge 80ml": {
+  family: "Ámbar floral",
+  top:  ["Azafrán", "Naranja amarga"],
+  mid:  ["Jazmín", "Amberwood"],
+  base: ["Resinas", "Maderas claras", "Ámbar gris"]
+},
+
+// --- PARIS CORNER ---
+"khair pistachio": {
+  family: "Gourmand dulce",
+  top:  ["Pistacho", "Cardamomo", "Bergamota"],
+  mid:  ["Magnolia", "Ylang-ylang"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+
+
+};
+
 window.PRODUCTS = RAW.map(r => {
   const key = `${r.name}`.toLowerCase().trim();
   const image = IMAGES_MAP[key] || "";
+
+  const extra = NOTES[key] || {};
   return {
     id: slug(`${r.brand} ${r.name}`),
     name: r.name,
     brand: r.brand,
-    family: "Por definir",
+    family: extra.family || "",                 // familia real si la definiste
     gender: "Unisex",
     concentration: "EDP",
     price_ars: toARS(r.usd),
-    notesTop: [], notesMid: [], notesBase: [],
+    notesTop: extra.top || [],
+    notesMid: extra.mid || [],
+    notesBase: extra.base || [],
     image,
     tags: []
   };

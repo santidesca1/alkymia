@@ -2,7 +2,8 @@
 const $ = s => document.querySelector(s);
 const PHONE = "543513646356"; // sin + ni espacios
 
-const state = { brand:"", family:"", gender:"", priceBand:"", sort:"name-asc" };
+const state = { brand:"", family:"", gender:"", priceBand:"", sort:"name-asc", search:"" };
+
 
 function money(n){ return n.toLocaleString("es-AR"); }
 function unique(list, key){ return [...new Set(list.map(o=>o[key]).filter(Boolean))].sort(); }
@@ -13,18 +14,18 @@ function fillFilters(){
   const genders = unique(PRODUCTS, "gender");
   for(const b of brands) $("#fBrand").insertAdjacentHTML("beforeend", `<option>${b}</option>`);
   for(const f of families) $("#fFamily").insertAdjacentHTML("beforeend", `<option>${f}</option>`);
-  for(const g of genders) $("#fGender").insertAdjacentHTML("beforeend", `<option>${g}</option>`);
 }
 
 function card(p){
   const notes = [...(p.notesTop||[]),...(p.notesMid||[]),...(p.notesBase||[])].slice(0,5).join(", ");
-  const imgTag = p.image ? `<img src="${p.image}" alt="${p.name} — ${p.brand}">` : "";
+  const imgTag = p.image ? `<img src="${p.image}" alt="${p.name} — ${p.brand}" loading="lazy" decoding="async">` : "";
+
   return `
   <article class="card" data-sku="${p.id}">
     <div class="card__img">${imgTag}</div>
     <div class="card__body">
       <h3>${p.name}</h3>
-      <div class="sub">${p.brand} · ${p.concentration} · ${p.gender}</div>
+      <div class="sub">${p.brand}</div>
       <p class="notes">${notes}</p>
       <div class="meta"><span>$ ${money(p.price_ars)} ARS</span><span class="badge">${p.family}</span></div>
       <div class="cta-row">
@@ -40,59 +41,91 @@ function card(p){
   </article>`;
 }
 
-function filterProducts(){
-  return window.PRODUCTS.filter(p=>{
-    if(state.brand && p.brand!==state.brand) return false;
-    if(state.family && p.family!==state.family) return false;
-    if(state.gender && p.gender!==state.gender) return false;
-    if(state.priceBand){
-      const v = p.price_ars;
-      if(state.priceBand==="1" && !(v<=40000)) return false;
-      if(state.priceBand==="2" && !(v>40000 && v<=60000)) return false;
-      if(state.priceBand==="3" && !(v>60000)) return false;
-    }
-    return true;
-  }).sort((a,b)=>{
-    switch(state.sort){
-      case "price-asc": return a.price_ars - b.price_ars;
-      case "price-desc": return b.price_ars - a.price_ars;
-      case "brand-asc": return a.brand.localeCompare(b.brand);
-      default: return a.name.localeCompare(b.name);
-    }
-  });
+function norm(s){
+  return (s || "")
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // sin tildes
+    .replace(/[^a-z0-9]+/g, "");                      // sin espacios ni símbolos
 }
+
+function filterProducts(){
+  return window.PRODUCTS
+    .filter(p=>{
+      if(state.brand && p.brand!==state.brand) return false;
+      if(state.family && p.family!==state.family) return false;
+      if(state.gender && p.gender!==state.gender) return false;
+      if(state.priceBand){
+        const v = p.price_ars;
+        if(state.priceBand==="1" && !(v<=40000)) return false;
+        if(state.priceBand==="2" && !(v>40000 && v<=60000)) return false;
+        if(state.priceBand==="3" && !(v>60000)) return false;
+      }
+
+      if(state.search){
+        const q = norm(state.search);
+        const hay = norm([
+          p.name, p.brand, p.family, p.gender, p.concentration,
+          (p.notesTop||[]).join(" "),
+          (p.notesMid||[]).join(" "),
+          (p.notesBase||[]).join(" "),
+          (p.tags||[]).join(" ")
+        ].join(" "));
+        if(!hay.includes(q)) return false;
+      }
+      return true;
+    })
+    .sort((a,b)=>{
+      switch(state.sort){
+        case "price-asc":  return a.price_ars - b.price_ars;
+        case "price-desc": return b.price_ars - a.price_ars;
+        case "brand-asc":  return a.brand.localeCompare(b.brand);
+        default:           return a.name.localeCompare(b.name);
+      }
+    });
+  }
 
 function render(){ $("#grid").innerHTML = filterProducts().map(card).join(""); }
 
 function bind(){
   $("#fBrand").onchange  = e=>{ state.brand = e.target.value;  render(); };
   $("#fFamily").onchange = e=>{ state.family = e.target.value; render(); };
-  $("#fGender").onchange = e=>{ state.gender = e.target.value; render(); };
   $("#fPrice").onchange  = e=>{ state.priceBand = e.target.value; render(); };
   $("#fSort").onchange   = e=>{ state.sort = e.target.value;    render(); };
+  const debounce = (fn, ms=200) => {
+  let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
+  };
+  $("#fSearch").oninput = debounce(e=>{
+  state.search = e.target.value;
+  render();
+  }, 200);
 
-  // WhatsApp automático
-  document.addEventListener("click",(e)=>{
-    const btn = e.target.closest(".buy-btn");
-    if(!btn) return;
-    const card = btn.closest(".card");
-    const qty = Math.max(1, parseInt(card.querySelector(".qty")?.value||"1",10));
-    const name  = btn.dataset.name;
-    const brand = btn.dataset.brand;
-    const price = Number(btn.dataset.price);
-    const size  = btn.dataset.size;
-    const notes = btn.dataset.notes || "";
-    const msg = [
-      "Hola AL KYMIA, quiero comprar:",
-      `• ${name} (${size}) x${qty}`,
-      `• Marca: ${brand}`,
-      `• Precio: $${price.toLocaleString("es-AR")} ARS`,
-      notes ? `Notas: ${notes}` : null,
-      "", "Mi nombre: ______","Envío a: ______","Forma de pago: ______"
-    ].filter(Boolean).join("\n");
-    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
-    window.open(url,"_blank");
-  });
+ // WhatsApp automático
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".buy-btn");
+  if (!btn) return;
+  const card = btn.closest(".card");
+  const qty = Math.max(1, parseInt(card.querySelector(".qty")?.value || "1", 10));
+  const name = btn.dataset.name;
+  const brand = btn.dataset.brand;
+  const price = Number(btn.dataset.price);
+  const size = btn.dataset.size;
+  const notes = btn.dataset.notes || "";
+  const msg = [
+    "Hola AL KYMIA, quiero comprar:",
+    `• ${name} (${size}) x${qty}`,
+    `• Marca: ${brand}`,
+    `• Precio: $${price.toLocaleString("es-AR")} ARS`,
+    notes ? `Notas: ${notes}` : null,
+    "",
+    "Mi nombre: ______",
+    "Envío a: ______",
+    "Forma de pago: ______"
+  ].filter(Boolean).join("\n");
+
+  const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
+});
+
 }
 
 window.verNotas = function(id){

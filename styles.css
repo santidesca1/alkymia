@@ -153,3 +153,26 @@ body::before{
 }
 .lightbox img{max-width:90%; max-height:85%; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,.6)}
 .lightbox .close{position:absolute; top:20px; right:28px; font-size:2rem; color:#fff; cursor:pointer}
+
+.filters{position:sticky; top:64px; z-index:5; background:rgba(10,10,10,.6); backdrop-filter:blur(6px); padding:.8rem 1rem; border:1px solid rgba(212,175,55,.25); border-radius:14px}
+
+/* Buscador en filtros */
+.filters .filter-input{
+  background:#0f0f0f;
+  color:#ecdca9;
+  border:1px solid rgba(212,175,55,.35);
+  padding:.7rem 1rem;
+  border-radius:12px;
+  font-weight:700;
+  min-width:260px;
+  outline:none;
+}
+.filters .filter-input::placeholder{ color:#c8bc8a; opacity:.9; }
+.filters .filter-input:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(212,175,55,.15);
+}
+@media (max-width: 640px){ .filters .filter-input{ min-width:unset; width:100%; } }
+
+.btn:focus-visible, .ghost:focus-visible { outline:2px solid var(--gold); outline-offset:2px }
+
