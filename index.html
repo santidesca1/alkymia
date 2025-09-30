@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Al KYMIA — Perfumes Árabes de Lujo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__wrap">
+      <div class="brand">
+        <span class="brand__crest">♔</span>
+        <span class="brand__name">AL KYMIA</span>
+      </div>
+      <nav class="menu">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#descubri">Descubrí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO CAROUSEL -->
+  <section class="hero hero--carousel">
+    <div class="hero__veil"></div>
+
+    <!-- Slides -->
+    <figure class="slide active" style="--bg:url('img/banner1.jpg'); background-size:cover; background-position:center;"></figure>
+    <figure class="slide" style="--bg:url('https://images.pexels.com/photos/1458457/pexels-photo-1458457.jpeg?auto=compress&cs=tinysrgb&w=1920')"></figure>
+    <figure class="slide" style="--bg:url('img/banner3.jpg'); background-size:cover; background-position:center;"></figure>
+
+    <!-- Contenido -->
+    <div class="hero__inner">
+      <h1 class="title-xl">Perfumería árabe de alta gama</h1>
+      <p class="subtitle">Estelas opulentas. Proyección real.</p>
+      <div class="cta-row">
+        <a class="btn btn--gold" href="#catalogo">Ver catálogo</a>
+        <a class="btn btn--outline" href="https://wa.me/543513646356">WhatsApp</a>
+      </div>
+      <div class="hero__badges">
+        <span>Selección curada</span><span>Envíos a todo el país</span><span>Fragancias intensas</span>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="hero__dots" id="heroDots"></div>
+  </section>
+
+  <!-- CATÁLOGO DINÁMICO -->
+  <section id="catalogo" class="catalog">
+    <div class="section-head">
+      <h2 class="title-lg">Colección Al KYMIA</h2>
+      <p>Filtrá por marca, familia, género, precio u orden.</p>
+    </div>
+
+    <div class="filters">
+      <select id="fBrand"><option value="">Marca</option></select>
+      <select id="fFamily"><option value="">Familia</option></select>
+      <select id="fGender"><option value="">Género</option></select>
+      <select id="fPrice">
+        <option value="">Precio</option>
+        <option value="1">hasta $40k</option>
+        <option value="2">$40k–$60k</option>
+        <option value="3">más de $60k</option>
+      </select>
+      <select id="fSort">
+        <option value="name-asc">A–Z</option>
+        <option value="price-asc">Precio ↑</option>
+        <option value="price-desc">Precio ↓</option>
+        <option value="brand-asc">Marca</option>
+      </select>
+    </div>
+
+    <section id="grid" class="grid"></section>
+  </section>
+
+  <!-- BANNER AMBIENTACIÓN -->
+  <section class="ambience"
+    style="--bg:url('https://images.pexels.com/photos/1458454/pexels-photo-1458454.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+    <div class="ambience__veil"></div>
+    <div class="ambience__content">
+      <h3>Arquitectura palaciega. Materiales nobles. Detalles dorados.</h3>
+      <p>La esencia del lujo árabe aplicada a perfumería.</p>
+    </div>
+  </section>
+
+  <!-- DESCUBRÍ TU PERFUME -->
+  <section id="descubri" class="quiz">
+    <div class="section-head">
+      <h2 class="title-lg">Descubrí tu perfume ideal</h2>
+      <p>Te guiamos según tu gusto.</p>
+    </div>
+    <form class="quiz__form" onsubmit="return false;">
+      <label>¿Preferís dulce o especiado?
+        <select id="q1"><option>Dulce</option><option>Especiado</option><option>Fresco</option></select>
+      </label>
+      <label>¿Uso?
+        <select id="q2"><option>Diario</option><option>Nocturno</option><option>Evento</option></select>
+      </label>
+      <button class="btn btn--gold" onclick="recomendar()">Recomendar</button>
+      <div id="resultado" class="quiz__result"></div>
+    </form>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="contact__card">
+      <h2 class="title-lg">Contacto</h2>
+      <p>Consultas y compras directas.</p>
+      <a class="btn btn--whatsapp" href="https://wa.me/543513646356">WhatsApp: 351 364 6356</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Al KYMIA. Perfumes árabes de lujo.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function recomendar(){
+      const a = document.getElementById('q1').value;
+      const b = document.getElementById('q2').value;
+      let s = '';
+      if(a==='Dulce' && b!=='Fresco') s = 'Khamrah / Khamrah Dukhan / Yara.';
+      else if(a==='Especiado') s = 'Salvo Intense / Hayaati Maleky / Qaed Al Fursan.';
+      else s = 'Aqua Dubai / Hawas Ice / Odyssey Homme White.';
+      document.getElementById('resultado').innerText = 'Recomendación: ' + s;
+    }
+  </script>
+
+  <script>
+    // Carrusel automático con indicadores
+    const slides = Array.from(document.querySelectorAll('.hero--carousel .slide'));
+    const dotsWrap = document.getElementById('heroDots');
+    let idx = 0;
+
+    slides.forEach((_, i)=>{
+      const b = document.createElement('button');
+      b.addEventListener('click', ()=>go(i));
+      dotsWrap.appendChild(b);
+    });
+
+    function go(i){
+      slides[idx].classList.remove('active');
+      dotsWrap.children[idx].classList.remove('active');
+      idx = i % slides.length;
+      slides[idx].classList.add('active');
+      dotsWrap.children[idx].classList.add('active');
+    }
+    function next(){ go((idx+1)%slides.length); }
+    go(0);
+    setInterval(next, 5000);
+  </script>
+
+  <!-- Catálogo dinámico -->
+  <script src="data/products.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Lightbox (HTML) -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="">
+    <div id="lightbox-caption"></div>
+  </div>
+</body>
+</html>
