@@ -94,9 +94,43 @@ const IMAGES_MAP = {
   // --- MAISON ALHAMBRA ---
   "salvo intense": "img/salvoIntense.jpg",
   "la voie": "img/laVoie.jpg",
-
+  "your touch amber":            "img/yourTouchAmber.jpg",
+  "yeah":                        "img/yeah.jpg",
+  "so candid":                   "img/soCandidEDP.jpg",
+  "sceptre malachite":           "img/sceptreMalachite.jpg",
+  "salvo elixir":                "img/salvoElixir.jpg",
+  "salvo edp":                   "img/salvoEDP.jpg",
+  "reyna":                       "img/reyna.jpg",
+  "philos rosso":                "img/philosRosso.jpg",
+  "philos pura":                 "img/philosPura.jpg",
+  "philos opus noir":            "img/philosOpusNoir.jpg",
+  "pacific blue":                "img/pacificBllue.jpg",          
+  "la vivacite":                 "img/laVivacite.jpg",
+  "la rouge baroque extreme":    "img/laRougeBaroqueExtreme.jpg",
+  "la rouge baroque":            "img/laRougeBaroque.jpg",
+  "jorge di profumo":            "img/jorgeDiProfumo.jpg",
+  "jorge deep blue":             "img/jorgeDeepBlue.jpg",
+  "glacier le noir":             "img/glacierLeNoir.jpg",
+  "glacier bold":                "img/glacierBold.jpg",
+  "glacier bella":                "img/glacierBella.jpg",
+  "your touch intense (hombre)": "img/yourTouchIntenseFM.jpg",
+  "your touch for women":        "img/yourTochFW.jpg",
+  "delilah pour femme": "img/delilahPourFemme.jpg",
+  "dark door sport": "img/darkDoorSport.jpg",
+            
   // --- RASASI ---
-  "hawas fire": "img/hawasFire.jpg"
+  "hawas fire": "img2/hawasFire.jpg",
+  "hawas masc": "img2/hawasMasc.jpg",
+  "hawas ice": "img2/hawasIce.jpg",
+  "hawas elixir": "img2/hawasElixir.jpg",
+
+// --- PARIS CORNER ---
+  "khair pistachio": "img2/khairPistacho.jpg",
+
+// --- ORIENTICA ---
+  "amber rouge 80ml": "img2/amberRouge80.jpg",
+  "amber rouge 150ml": "img2/amberRouge150.jpg",
+
 };
 
 // === LISTA RAW (costo USD). Podés seguir agregando en el mismo formato.
