@@ -129,19 +129,6 @@
     <p>© 2025 Al KYMIA. Perfumes árabes de lujo.</p>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    function recomendar(){
-      const a = document.getElementById('q1').value;
-      const b = document.getElementById('q2').value;
-      let s = '';
-      if(a==='Dulce' && b!=='Fresco') s = 'Khamrah / Khamrah Dukhan / Yara.';
-      else if(a==='Especiado') s = 'Salvo Intense / Hayaati Maleky / Qaed Al Fursan.';
-      else s = 'Aqua Dubai / Hawas Ice / Odyssey Homme White.';
-      document.getElementById('resultado').innerText = 'Recomendación: ' + s;
-    }
-  </script>
-
   <script>
     // Carrusel automático con indicadores
     const slides = Array.from(document.querySelectorAll('.hero--carousel .slide'));

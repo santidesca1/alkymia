@@ -21,7 +21,7 @@ function card(p){
   const imgTag = p.image ? `<img src="${p.image}" alt="${p.name} — ${p.brand}" loading="lazy" decoding="async">` : "";
 
   return `
-  <article class="card" data-sku="${p.id}">
+ <article class="card" id="${p.id}" data-sku="${p.id}">
     <div class="card__img">${imgTag}</div>
     <div class="card__body">
       <h3>${p.name}</h3>
@@ -157,3 +157,46 @@ document.addEventListener("DOMContentLoaded", () => {
   close.onclick = () => lb.style.display = "none";
   lb.onclick = e => { if(e.target === lb) lb.style.display = "none"; };
 });
+
+// Recomendador dinámico usando notas
+window.recomendar = function(){
+  const pref = document.getElementById('q1').value.toLowerCase();   // dulce | especiado | fresco
+  const uso  = document.getElementById('q2').value.toLowerCase();   // diario | nocturno | evento
+
+  const prefKeys = {
+    dulce:    ["vainilla","tonka","ámbar","caramelo","miel","pralin"],
+    especiado:["canela","pimienta","cardamomo","clavo","incienso","azafrán","jengibre"],
+    fresco:   ["bergamota","limón","menta","lavanda","marino","acuático","verde","cítrico"]
+  };
+  const usoBoost = {
+    diario:   ["fresco","bergamota","limón","lavanda","verde","acuático"],
+    nocturno: ["ámbar","oud","vainilla","especiado","incienso","tabaco"],
+    evento:   ["intense","elixir","parfum","extrait","royal","prestige"]
+  };
+
+  const keysPref = prefKeys[pref] || [];
+  const keysUso  = usoBoost[uso]  || [];
+
+  function score(p){
+    const txt = [
+      p.name,
+      ...(p.notesTop||[]), ...(p.notesMid||[]), ...(p.notesBase||[])
+    ].join(" ").toLowerCase();
+
+    let s = 0;
+    for(const k of keysPref) if(txt.includes(k)) s += 3;
+    for(const k of keysUso)  if(txt.includes(k)) s += 2;
+    return s;
+  }
+
+  const ranked = PRODUCTS
+    .map(p => ({ p, s: score(p) }))
+    .filter(r => r.s > 0)
+    .sort((a,b) => b.s - a.s || a.p.price_ars - b.p.price_ars)
+    .slice(0,5)
+    .map(r => `• <a href="#${r.p.id}">${r.p.name}</a> — $${r.p.price_ars.toLocaleString('es-AR')} ARS`)
+    .join("<br>");
+
+  document.getElementById("resultado").innerHTML =
+    ranked || "No tengo suficiente info con esa combinación. Probá otra opción.";
+};
