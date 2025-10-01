@@ -599,6 +599,162 @@ const NOTES = {
   mid:  ["Rosa", "Freesia"],
   base: ["Musk", "Vainilla"]
 },
+"afeef": {
+  family: "Amaderado aromático",
+  top:  ["Limón", "Pomelo"],
+  mid:  ["Lavanda", "Jazmín"],
+  base: ["Maderas", "Musk", "Ámbar"]
+},
+"haya": {
+  family: "Floral frutal",
+  top:  ["Frutas tropicales"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Musk", "Vainilla"]
+},
+"eclaire": {
+  family: "Dulce gourmand",
+  top:  ["Caramelo", "Avellana"],
+  mid:  ["Praliné", "Chocolate"],
+  base: ["Vainilla", "Musk"]
+},
+"ajwad": {
+  family: "Dulce frutal",
+  top:  ["Frutos rojos"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
+"his confession": {
+  family: "Ámbar especiado",
+  top:  ["Canela", "Cardamomo"],
+  mid:  ["Rosa", "Incienso"],
+  base: ["Ámbar", "Maderas", "Musk"]
+},
+"her confession": {
+  family: "Floral oriental",
+  top:  ["Durazno", "Mandarina"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Ámbar", "Musk", "Vainilla"]
+},
+"the kingdom masc": {
+  family: "Amaderado especiado",
+  top:  ["Bergamota", "Manzana"],
+  mid:  ["Cedro", "Lavanda"],
+  base: ["Ámbar", "Musk", "Pachulí"]
+},
+"the kingdom fem": {
+  family: "Floral afrutado",
+  top:  ["Mandarina", "Frambuesa"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Vainilla", "Sándalo"]
+},
+"fakhar fem": {
+  family: "Floral gourmand",
+  top:  ["Frutos rojos", "Mandarina"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Musk"]
+},
+"fakhar platinum": {
+  family: "Amaderado especiado",
+  top:  ["Cardamomo", "Pomelo"],
+  mid:  ["Lavanda", "Jazmín"],
+  base: ["Maderas", "Musk", "Ámbar"]
+},
+"fakhar gold": {
+  family: "Dulce especiado",
+  top:  ["Manzana", "Canela"],
+  mid:  ["Cedro", "Lavanda"],
+  base: ["Ámbar", "Vainilla"]
+},
+"art of nature ii": {
+  family: "Aromático cítrico",
+  top:  ["Limón", "Pomelo"],
+  mid:  ["Menta", "Jengibre"],
+  base: ["Musk", "Vetiver"]
+},
+"confidential gold": {
+  family: "Ámbar especiado",
+  top:  ["Canela", "Nuez moscada"],
+  mid:  ["Rosa", "Jazmín"],
+  base: ["Ámbar", "Maderas", "Vainilla"]
+},
+"pride pisa": {
+  family: "Floral especiado",
+  top:  ["Bergamota", "Mandarina"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Musk", "Vainilla"]
+},
+"rave now woman": {
+  family: "Floral frutal",
+  top:  ["Pera", "Frambuesa"],
+  mid:  ["Rosa", "Iris"],
+  base: ["Musk", "Ámbar"]
+},
+"ana abiyedh rouge": {
+  family: "Ámbar especiado",
+  top:  ["Azafrán"],
+  mid:  ["Jazmín"],
+  base: ["Ámbar gris", "Maderas"]
+},
+"ana abiyedh": {
+  family: "Ámbar amaderado",
+  top:  ["Cardamomo", "Pomelo"],
+  mid:  ["Iris", "Geranio"],
+  base: ["Ámbar", "Musk"]
+},
+"ishq al shuyukh": {
+  family: "Dulce especiado",
+  top:  ["Caramelo", "Nuez moscada"],
+  mid:  ["Praliné", "Canela"],
+  base: ["Vainilla", "Ámbar"]
+},
+"qimmah masc": {
+  family: "Amaderado especiado",
+  top:  ["Bergamota", "Manzana"],
+  mid:  ["Rosa", "Lavanda"],
+  base: ["Ámbar", "Musk"]
+},
+"sakeena": {
+  family: "Ámbar dulce",
+  top:  ["Caramelo", "Frutas"],
+  mid:  ["Praliné", "Flor blanca"],
+  base: ["Vainilla", "Musk", "Ámbar"]
+},
+"atlas": {
+  family: "Amaderado especiado",
+  top:  ["Pomelo", "Especias"],
+  mid:  ["Lavanda", "Cedro"],
+  base: ["Ámbar", "Musk"]
+},
+"jean lowe immortal": {
+  family: "Ámbar fougère",
+  top:  ["Bergamota", "Limón"],
+  mid:  ["Lavanda", "Geranio"],
+  base: ["Vetiver", "Musk"]
+},
+"yara candy": {
+  family: "Floral frutal dulce",
+  top:  ["Frutos rojos", "Mandarina"],
+  mid:  ["Orquídea", "Jazmín"],
+  base: ["Vainilla", "Sándalo", "Musk"]
+},
+"ana abiyedh 60ml": {
+  family: "Amaderado almizclado",
+  top:  ["Cardamomo", "Pomelo"],
+  mid:  ["Geranio", "Iris"],
+  base: ["Ámbar", "Maderas", "Musk"]
+},
+"ana abiyedh rouge 60ml": {
+  family: "Ámbar especiado",
+  top:  ["Azafrán"],
+  mid:  ["Jazmín"],
+  base: ["Ámbar gris", "Maderas ambaradas"]
+},
+"angham": {
+  family: "Floral oriental",
+  top:  ["Pera", "Frambuesa"],
+  mid:  ["Rosa", "Iris", "Jazmín"],
+  base: ["Vainilla", "Ámbar", "Musk"]
+},
 
 // --- MAISON ALHAMBRA ---
 "salvo intense": {
@@ -625,7 +781,6 @@ const NOTES = {
   mid:  ["Lavanda", "Geranio"],
   base: ["Cedro", "Vetiver", "Musk"]
 },
-// --- MAISON ALHAMBRA (resto) ---
 "la rouge baroque": {
   family: "Ámbar floral",
   top:  ["Azafrán", "Naranja amarga"],
