@@ -2,11 +2,10 @@
   --gold:#d4af37;
   --gold-strong:#f0c75e;
   --emerald:#0f8a65;
-  --black:#0a0a0a;
+  --black:#240b0b;
   --ink:#121212;
   --off:#f6f1e7;
 }
-
 /* Reset básico */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--black);color:#fff}
@@ -75,7 +74,7 @@ section{scroll-margin-top:80px}
   aspect-ratio: 4 / 5;
   display:flex; align-items:center; justify-content:center;
   padding:16px;                 /* marco consistente */
-  background:#0f0f0f;           /* fondo de la tarjeta */
+  background:#ffffff;           /* fondo de la tarjeta */
   border-radius:14px;
 }
 
@@ -116,7 +115,7 @@ section{scroll-margin-top:80px}
 
 /* Contacto y footer */
 .contact{padding:3rem 1rem 4rem}
-.contact__card{max-width:760px;margin:0 auto;text-align:center;border:1px solid rgba(212,175,55,.35);border-radius:18px;padding:2rem;background:radial-gradient(600px 300px at 50% 0,rgba(15,138,101,.18),transparent),linear-gradient(180deg,#0f0f0f,#090909)}
+.contact__card{max-width:760px;margin:0 auto;text-align:center;border:1px solid rgba(212,175,55,.35);border-radius:18px;padding:2rem;background:radial-gradient(600px 300px at 50% 0,rgba(177, 178, 179, 0.18),transparent),linear-gradient(180deg,#0f0f0f,#090909)}
 .footer{padding:2rem 1rem;border-top:1px solid rgba(212,175,55,.35);text-align:center;color:#cfc6a6}
 
 /* Hero carousel */

@@ -2,7 +2,7 @@
 const $ = s => document.querySelector(s);
 const PHONE = "543513646356"; // sin + ni espacios
 
-const state = { brand:"", family:"", gender:"", priceBand:"", sort:"name-asc", search:"" };
+const state = { brand:"", family:"", priceBand:"", sort:"name-asc", search:"" };
 
 
 function money(n){ return n.toLocaleString("es-AR"); }
@@ -11,7 +11,6 @@ function unique(list, key){ return [...new Set(list.map(o=>o[key]).filter(Boolea
 function fillFilters(){
   const brands = unique(PRODUCTS, "brand");
   const families = unique(PRODUCTS, "family");
-  const genders = unique(PRODUCTS, "gender");
   for(const b of brands) $("#fBrand").insertAdjacentHTML("beforeend", `<option>${b}</option>`);
   for(const f of families) $("#fFamily").insertAdjacentHTML("beforeend", `<option>${f}</option>`);
 }
@@ -53,8 +52,7 @@ function filterProducts(){
     .filter(p=>{
       if(state.brand && p.brand!==state.brand) return false;
       if(state.family && p.family!==state.family) return false;
-      if(state.gender && p.gender!==state.gender) return false;
-      if(state.priceBand){
+          if(state.priceBand){
         const v = p.price_ars;
         if(state.priceBand==="1" && !(v<=40000)) return false;
         if(state.priceBand==="2" && !(v>40000 && v<=60000)) return false;
@@ -86,18 +84,37 @@ function filterProducts(){
 
 function render(){ $("#grid").innerHTML = filterProducts().map(card).join(""); }
 
+function scrollToCatalogTop(){
+  const el = document.getElementById("catalogo") || document.body;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function bind(){
-  $("#fBrand").onchange  = e=>{ state.brand = e.target.value;  render(); };
-  $("#fFamily").onchange = e=>{ state.family = e.target.value; render(); };
-  $("#fPrice").onchange  = e=>{ state.priceBand = e.target.value; render(); };
-  $("#fSort").onchange   = e=>{ state.sort = e.target.value;    render(); };
+  $("#fBrand").onchange  = e=>{ state.brand = e.target.value;  render(); scrollToCatalogTop(); };
+  $("#fFamily").onchange = e=>{ state.family = e.target.value; render(); scrollToCatalogTop(); };
+  $("#fPrice").onchange  = e=>{ state.priceBand = e.target.value; render(); scrollToCatalogTop(); };
+  $("#fSort").onchange   = e=>{ state.sort = e.target.value;    render(); scrollToCatalogTop(); };
+
   const debounce = (fn, ms=200) => {
-  let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
+    let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
   };
+
   $("#fSearch").oninput = debounce(e=>{
-  state.search = e.target.value;
-  render();
+    state.search = e.target.value;
+    render();
+    scrollToCatalogTop();
   }, 200);
+
+  // Enter en el buscador = subir al inicio y “cerrar” el input
+  $("#fSearch").addEventListener("keydown", ev=>{
+    if(ev.key === "Enter"){
+      ev.preventDefault();
+      scrollToCatalogTop();
+      ev.target.blur();
+    }
+  });
+
+}
 
  // WhatsApp automático
 document.addEventListener("click", e => {
@@ -126,7 +143,6 @@ document.addEventListener("click", e => {
   window.open(url, "_blank");
 });
 
-}
 
 window.verNotas = function(id){
   const p = PRODUCTS.find(x=>x.id===id);
@@ -200,3 +216,6 @@ window.recomendar = function(){
   document.getElementById("resultado").innerHTML =
     ranked || "No tengo suficiente info con esa combinación. Probá otra opción.";
 };
+
+
+

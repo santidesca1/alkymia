@@ -1,6 +1,6 @@
 // data/products.js
 // Conversión y helpers
-const USD_TO_ARS = 1460;
+const USD_TO_ARS = 1500;
 const MARGIN = 1.40;
 // Redondea hacia arriba al múltiplo de 1000 más cercano
 const toARS = usd => {
@@ -9,7 +9,7 @@ const toARS = usd => {
 };
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-// Mapa de imágenes locales ya existentes (carpeta /img)
+// Mapa de imágenes locales ya existentes 
 const IMAGES_MAP = {
   // --- AFNAN ---
   "9 am dive": "img/9amDrive.jpg",
@@ -56,19 +56,21 @@ const IMAGES_MAP = {
   "odyssey dubai chocolate": "img/oDubaiChocolate.jpg",
   "odyssey tyrant": "img/oTyrant.jpg",
   "odyssey limoni": "img/oLimoni.jpg",
+  "odyssey aristo": "img2/OAristo.jpg",
 
   // --- BHARARA ---
   "bharara onyx": "img/bhararaOnyx.jpg",
   "bharara queen": "img/bhararaQueen.jpg",
-  "bharara king parfum 150 ml": "img/bhararaKing150.jpg",
-  "bharara king parfum 100 ml": "img/bhararaKingParfum.jpg",
+  "bharara king 150 ml": "img/bhararaKing150.jpg",
+  "bharara king parfum": "img/bhararaKingParfum.jpg",
   "bharara rose": "img/bhararaRose.jpg",
+  "pharaoh remesses ii": "img2/pRamessesII.jpg",
 
   // --- LATTAFA ---
   "fakhar men": "img/fakharMen.jpg",
   "khamrah": "img/khamrah.jpg",
   "khamrah qahwa": "img/khamrahQahwa.jpg",
-  "mayar intense": "img/mayarIntense.jpg",
+  "mayar natural intense": "img/mayarIntense.jpg",
   "odyssey mandarin sky": "img/oMandarinSky.jpg",
   "yara candy": "img/Yara.jpg",
   "yara rose": "img/yaraRose.jpg",
@@ -90,6 +92,43 @@ const IMAGES_MAP = {
   "angham": "img/angham.jpg",
   "ana abiyedh 60ml": "img/anaAbiyedh60.jpg",
   "sakeena": "img/sakeena.jpg",
+  "afeef": "img2/afeef.jpg",
+  "haya": "img2/haya.jpg",
+  "eclaire": "img2/eclaire.jpg",
+  "ajwad": "img2/ajwad.jpg",
+  "his confession": "img2/hisConfession.jpg",
+  "her confession": "img2/herConfession.jpg",
+  "the kingdom masc": "img2/theKingdomMasc.jpg",
+  "the kingdom fem": "img2/theKingdomFem.jpg",
+  "fakhar fem": "img2/fakharFem.jpg",
+  "fakhar gold": "img2/fakharGold.jpg",
+  "fakhar platinum": "img2/fakharPlatinum.jpg",
+  "mayar cherry": "img2/mayarCherry.jpg",
+  "hayaati edp": "img2/hayaatiedp.jpg",
+  "hayaati al maleky": "img2/hayaatiAlMaleky.jpg",
+  "hayaati florence": "img2/hayaatiFlorence.jpg",
+  "hayaati gold elixir": "img2/hayaatiGoldElixir.jpg",
+  "teriaq": "img2/teriaq.jpg",
+  "teriaq intense": "img2/teriaqIntense.jpg",
+  "maahir legacy": "img2/maahirLegacy.jpg",
+  "sehr": "img2/sehr.jpg",
+  "musamam white": "img2/musamamWhite.jpg",
+  "ansaan gold": "img2/asaanGold.jpg",
+  "khamrah dukhan": "img2/khamrahDukhan.jpg",
+  "qaed al fursan": "img2/QAF.jpg",
+  "qaed al fursan untamed": "img2/QAFUntamed.jpg",
+  "qaed al fursan unlimited": "img2/QAFUnlimited.jpg",
+  "bade'e al oud for glory": "img2/BAOForGlory.jpg",
+  "bade'e al oud honor & glory": "img2/BAOHonorGlory.jpg",
+  "bade'e al oud noble blush": "img2/BAONobleBush.jpg",
+  "bade'e al oud sublime": "img2/BAOSublime.jpg",
+  "bade'e al oud amethyst": "img2/BAOAmethyst.jpg",
+  "asad": "img2/asad.jpg",
+  "asad bourbon": "img2/asadBourbon.jpg",
+  "asad zanzibar": "img2/asadZanzibar.jpg",
+  "vintage radio": "img2/vintageRadio.jpg",
+  "emeer": "img2/emeer.jpg",
+  "shaheen gold": "img2/shaheenGold.jpg",
 
   // --- MAISON ALHAMBRA ---
   "salvo intense": "img/salvoIntense.jpg",
@@ -131,9 +170,14 @@ const IMAGES_MAP = {
   "amber rouge 80ml": "img2/amberRouge80.jpg",
   "amber rouge 150ml": "img2/amberRouge150.jpg",
 
+// ----FRENCH AVENUE----
+"royal blend nero": "img2/RBNero.jpg",
+"spectre ghost": "img2/spectreGhost.jpg",
+"vulcan feu": "img2/vulcanFeu.jpg",
+"liquid brun": "img2/liquidBrun.jpg",
 };
 
-// === LISTA RAW (costo USD). Podés seguir agregando en el mismo formato.
+//PRECIOS MAYORISTAS
 const RAW = [
   // AFNAN
   {brand:"Afnan", name:"Turathi Blue", usd:34.00},
@@ -178,19 +222,21 @@ const RAW = [
   {brand:"Armaf", name:"Odyssey Aoud", usd:30.50},
   {brand:"Armaf", name:"Odyssey Wild One", usd:27.00},
   {brand:"Armaf", name:"Odyssey Dubai Chocolate", usd:35.00},
+  {brand:"Armaf", name:"Odyssey Aristo", usd:45.00},
 
   // BHARARA
-  {brand:"Bharara", name:"Bharara King Parfum 150 ml", usd:55.00},
-  {brand:"Bharara", name:"Bharara King Parfum 100 ml", usd:60.00},
+  {brand:"Bharara", name:"Bharara King 150 ml", usd:55.00}, 
+  {brand:"Bharara", name:"Bharara King Parfum", usd:60.00}, 
   {brand:"Bharara", name:"Bharara Rose", usd:68.00},
   {brand:"Bharara", name:"Bharara Onyx", usd:48.00},
   {brand:"Bharara", name:"Bharara Queen", usd:50.00},
+  {brand:"Bharara", name:"Pharaoh Remesses II", usd:70.00},
 
   // LATTAFA
   {brand:"Lattafa", name:"Fakhar Men", usd:27.50},
   {brand:"Lattafa", name:"Khamrah", usd:27.50},
   {brand:"Lattafa", name:"Khamrah Qahwa", usd:27.50},
-  {brand:"Lattafa", name:"Mayar Intense", usd:25.00},
+  {brand:"Lattafa", name:"Mayar Natural Intense", usd:25.00},
   {brand:"Lattafa", name:"Yara Candy", usd:28.50},
   {brand:"Lattafa", name:"Yara Rose", usd:28.00},
   {brand:"Lattafa", name:"Yara Tous", usd:24.00},
@@ -210,13 +256,49 @@ const RAW = [
   {brand:"Lattafa", name:"Sakeena", usd:26.50},
   {brand:"Lattafa", name:"Atlas", usd:44.00},
   {brand:"Lattafa", name:"Victoria", usd:31.00},
+  {brand:"Lattafa", name:"Afeef", usd:36.50},
+  {brand:"Lattafa", name:"Haya", usd:27.50},
+  {brand:"Lattafa", name:"Eclaire", usd:30.00},
+  {brand:"Lattafa", name:"Ajwad", usd:23.00},
+  {brand:"Lattafa", name:"His Confession", usd:35.50},
+  {brand:"Lattafa", name:"Her Confession", usd:31.50},
+  {brand:"Lattafa", name:"The Kingdom Masc", usd:39.00},
+  {brand:"Lattafa", name:"The Kingdom Fem", usd:29.00},
+  {brand:"Lattafa", name:"Fakhar Fem", usd:29.00},
+  {brand:"Lattafa", name:"Fakhar Gold", usd:24.50},
+  {brand:"Lattafa", name:"Fakhar Platinum", usd:32.00},
+  {brand:"Lattafa", name:"Mayar Cherry", usd:25.00},
+  {brand:"Lattafa", name:"Hayaati EDP", usd:25.00},
+  {brand:"Lattafa", name:"Hayaati al Maleky", usd:24.00},
+  {brand:"Lattafa", name:"Hayaati Florence", usd:22.00},
+  {brand:"Lattafa", name:"Hayaati Gold Elixir", usd:20.00},
+  {brand:"Lattafa", name:"Teriaq", usd:28.00},
+  {brand:"Lattafa", name:"Teriaq Intense", usd:31.50},
+  {brand:"Lattafa", name:"Maahir Legacy", usd:25.00},
+  {brand:"Lattafa", name:"Sehr", usd:36.00},
+  {brand:"Lattafa", name:"Musamam White", usd:42.50},
+  {brand:"Lattafa", name:"Ansaan Gold", usd:30.00},
+  {brand:"Lattafa", name:"Khamrah Dukhan", usd:26.00},
+  {brand:"Lattafa", name:"Qaed Al Fursan", usd:23.00},
+  {brand:"Lattafa", name:"Qaed Al Fursan Unlimited", usd:20.00},
+  {brand:"Lattafa", name:"Qaed Al Fursan Untamed", usd:23.50},
+  {brand:"Lattafa", name:"Bade'e Al Oud for Glory", usd:26.50},
+  {brand:"Lattafa", name:"Bade'e Al Oud Honor & Glory", usd:26.00},
+  {brand:"Lattafa", name:"Bade'e Al Oud Noble Blush", usd:26.50},
+  {brand:"Lattafa", name:"Bade'e Al Oud Sublime", usd:27.50},
+  {brand:"Lattafa", name:"Bade'e Al Oud Amethyst", usd:26.50},
+  {brand:"Lattafa", name:"Asad", usd:25.00},
+  {brand:"Lattafa", name:"Asad Bourbon", usd:30.00},
+  {brand:"Lattafa", name:"Asad Zanzibar", usd:22.50},
+  {brand:"Lattafa", name:"Vintage Radio", usd:34.00},
+  {brand:"Lattafa", name:"Emeer", usd:40.00},
+  {brand:"Lattafa", name:"Shaheen Gold", usd:28.50},
 
   // MAISON ALHAMBRA
   {brand:"Maison Alhambra", name:"Jean Lowe Immortal", usd:28.00},
   {brand:"Maison Alhambra", name:"Salvo Edp", usd:24.00},
   {brand:"Maison Alhambra", name:"Salvo Intense", usd:24.00},
   {brand:"Maison Alhambra", name:"Salvo Elixir", usd:24.00},
-  {brand:"Maison Alhambra", name:"La Voie", usd:22.50},
   {brand:"Maison Alhambra", name:"La Rouge Baroque", usd:22.00},
   {brand:"Maison Alhambra", name:"La Rouge Baroque Extreme", usd:24.00},
   {brand:"Maison Alhambra", name:"Delilah Pour Femme", usd:24.00},
@@ -229,6 +311,7 @@ const RAW = [
   {brand:"Maison Alhambra", name:"Glacier Bella", usd:23.00},
   {brand:"Maison Alhambra", name:"Glacier Le Noir", usd:23.00},
   {brand:"Maison Alhambra", name:"Glacier Bold", usd:26.00},
+  {brand:"Maison Alhambra", name:"La Voie", usd:22.50},
   {brand:"Maison Alhambra", name:"Philos Opus Noir", usd:20.00},
   {brand:"Maison Alhambra", name:"Philos Pura", usd:25.00},
   {brand:"Maison Alhambra", name:"Philos Rosso", usd:22.00},
@@ -251,9 +334,16 @@ const RAW = [
   {brand:"Rasasi", name:"Hawas Ice", usd:31.50},
   {brand:"Rasasi", name:"Hawas Elixir", usd:35.00},
   {brand:"Rasasi", name:"Hawas Fire", usd:32.00},
+
+  // FRENCH AVENUE
+  {brand:"French Avenue", name:"Liquid Brun", usd:41.00},
+  {brand:"French Avenue", name:"Royal Blend Nero", usd:37.00},
+  {brand:"French Avenue", name:"Spectre Ghost", usd:42.00},
+  {brand:"French Avenue", name:"Vulcan Feu", usd:45.00},
 ];
 
-// Notas por perfume 
+// Notas por perfume
+
 const NOTES = {
 // --- AFNAN ---
 "turathi blue": {
@@ -494,6 +584,13 @@ const NOTES = {
   mid:  ["Praliné", "Caramelo"],
   base: ["Vainilla", "Ámbar", "Musk"]
 },
+"odyssey aristo": {
+  family: "Amaderado especiado",
+  top: ["Bergamota", "Limón"],
+  mid: ["Lavanda", "Geranio", "Nuez moscada"],
+  base: ["Vetiver", "Ámbar", "Maderas", "Musk"]
+},
+
 // --- BHARARA ---
 "bharara king parfum 150 ml": {
   family: "Ámbar especiado",
@@ -525,6 +622,12 @@ const NOTES = {
   mid:  ["Rosa", "Jazmín"],
   base: ["Vainilla", "Musk", "Ámbar"]
 },
+"pharaoh remesses ii": {
+  family: "Ambarado especiado",
+  top: ["Canela", "Azafrán", "Cardamomo"],
+  mid: ["Ámbar", "Madera de oud", "Resinas"],
+  base: ["Vainilla", "Cuero", "Maderas preciosas"]
+},
 
 // --- LATTAFA ---
 "fakhar men": {
@@ -545,7 +648,7 @@ const NOTES = {
   mid:  ["Praliné", "Caramelo"],
   base: ["Vainilla", "Ámbar", "Musk"]
 },
-"mayar intense": {
+"mayar natural intense": {
   family: "Floral gourmand",
   top:  ["Frutos rojos", "Mandarina"],
   mid:  ["Orquídea", "Jazmín"],
@@ -756,6 +859,230 @@ const NOTES = {
   base: ["Vainilla", "Ámbar", "Musk"]
 },
 
+"afeef": {
+  family: "Amaderado especiado",
+  top: ["Bergamota", "Pimienta"],
+  mid: ["Cedro", "Especias"],
+  base: ["Maderas", "Ámbar", "Musk"]
+},
+"haya": {
+  family: "Floral frutal",
+  top: ["Mandarina", "Pera"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Musk", "Ámbar", "Vainilla"]
+},
+"eclaire": {
+  family: "Gourmand avainillado",
+  top: ["Caramelo", "Vainilla"],
+  mid: ["Praliné", "Canela"],
+  base: ["Tonka", "Musk", "Maderas"]
+},
+"ajwad": {
+  family: "Ámbar frutal",
+  top: ["Frutos rojos", "Bergamota"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Maderas", "Vainilla", "Ámbar"]
+},
+"his confession": {
+  family: "Amaderado aromático",
+  top: ["Limón", "Pomelo"],
+  mid: ["Lavanda", "Notas verdes"],
+  base: ["Maderas", "Musk", "Ámbar"]
+},
+"her confession": {
+  family: "Floral frutal",
+  top: ["Frutos rojos", "Mandarina"],
+  mid: ["Rosa", "Peonía"],
+  base: ["Musk", "Vainilla", "Ámbar"]
+},
+"the kingdom masc": {
+  family: "Amaderado especiado",
+  top: ["Toronja", "Pimienta"],
+  mid: ["Lavanda", "Salvia"],
+  base: ["Maderas", "Ámbar gris"]
+},
+"the kingdom fem": {
+  family: "Floral afrutado",
+  top: ["Durazno", "Pera"],
+  mid: ["Jazmín", "Rosa"],
+  base: ["Vainilla", "Musk"]
+},
+"fakhar fem": {
+  family: "Floral dulce",
+  top: ["Mandarina", "Frambuesa"],
+  mid: ["Rosa", "Azahar"],
+  base: ["Ámbar", "Vainilla", "Musk"]
+},
+"fakhar gold": {
+  family: "Ambarado especiado",
+  top: ["Canela", "Bergamota"],
+  mid: ["Rosa", "Nuez moscada"],
+  base: ["Maderas", "Ámbar", "Vainilla"]
+},
+"fakhar platinum": {
+  family: "Aromático fresco",
+  top: ["Limón", "Menta"],
+  mid: ["Lavanda", "Geranio"],
+  base: ["Ámbar gris", "Maderas"]
+},
+"mayar cherry": {
+  family: "Gourmand frutal",
+  top: ["Cereza", "Frambuesa"],
+  mid: ["Praliné", "Rosa"],
+  base: ["Vainilla", "Musk"]
+},
+"hayaati edp": {
+  family: "Amaderado especiado",
+  top: ["Canela", "Azafrán"],
+  mid: ["Cedro", "Jazmín"],
+  base: ["Maderas", "Ámbar", "Musk"]
+},
+"hayaati al maleky": {
+  family: "Ambarado especiado",
+  top: ["Nuez moscada", "Cardamomo"],
+  mid: ["Rosa", "Lavanda"],
+  base: ["Maderas", "Ámbar"]
+},
+"hayaati florence": {
+  family: "Floral fresco",
+  top: ["Bergamota", "Notas verdes"],
+  mid: ["Jazmín", "Iris"],
+  base: ["Musk", "Ámbar gris"]
+},
+"hayaati gold elixir": {
+  family: "Ámbar especiado",
+  top: ["Canela", "Azafrán"],
+  mid: ["Jazmín", "Rosa"],
+  base: ["Ámbar", "Maderas"]
+},
+"teriaq": {
+  family: "Amaderado dulce",
+  top: ["Caramelo", "Mandarina"],
+  mid: ["Canela", "Rosa"],
+  base: ["Ámbar", "Vainilla", "Maderas"]
+},
+"teriaq intense": {
+  family: "Ámbar gourmand",
+  top: ["Caramelo", "Bergamota"],
+  mid: ["Jazmín", "Rosa"],
+  base: ["Maderas", "Vainilla", "Ámbar"]
+},
+"maahir legacy": {
+  family: "Amaderado especiado",
+  top: ["Pimienta negra", "Limón"],
+  mid: ["Lavanda", "Rosa"],
+  base: ["Maderas", "Ámbar gris"]
+},
+"sehr": {
+  family: "Floral dulce",
+  top: ["Cereza", "Mandarina"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Vainilla", "Musk", "Ámbar"]
+},
+"musamam white": {
+  family: "Ambarado floral",
+  top: ["Azafrán", "Bergamota"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Ámbar", "Maderas", "Musk"]
+},
+"ansaan gold": {
+  family: "Ámbar dulce",
+  top: ["Cítricos", "Frutas tropicales"],
+  mid: ["Rosa", "Azahar"],
+  base: ["Ámbar", "Maderas"]
+},
+"khamrah dukhan": {
+  family: "Gourmand ahumado",
+  top: ["Canela", "Nuez moscada"],
+  mid: ["Dátil", "Praliné"],
+  base: ["Vainilla", "Ámbar", "Maderas ahumadas"]
+},
+"qaed al fursan": {
+  family: "Amaderado frutal",
+  top: ["Piña", "Manzana"],
+  mid: ["Jazmín", "Rosa"],
+  base: ["Maderas", "Musk"]
+},
+"qaed al fursan untamed": {
+  family: "Amaderado intenso",
+  top: ["Toronja", "Pimienta"],
+  mid: ["Lavanda", "Notas marinas"],
+  base: ["Maderas", "Ámbar gris"]
+},
+"qaed al fursan unlimited": {
+  family: "Amaderado especiado",
+  top: ["Cítricos", "Cardamomo"],
+  mid: ["Jazmín", "Geranio"],
+  base: ["Maderas", "Ámbar"]
+},
+"bade'e al oud for glory": {
+  family: "Ambarado especiado",
+  top: ["Azafrán", "Lavanda"],
+  mid: ["Jazmín", "Rosa"],
+  base: ["Maderas", "Ámbar", "Oud"]
+},
+"bade'e al oud honor & glory": {
+  family: "Ambarado especiado",
+  top: ["Canela", "Azafrán"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Oud", "Maderas", "Ámbar"]
+},
+"bade'e al oud noble blush": {
+  family: "Ámbar floral",
+  top: ["Toronja", "Frambuesa"],
+  mid: ["Rosa", "Iris"],
+  base: ["Musk", "Maderas", "Ámbar"]
+},
+"bade'e al oud sublime": {
+  family: "Ámbar dulce",
+  top: ["Vainilla", "Frutos rojos"],
+  mid: ["Rosa", "Praliné"],
+  base: ["Ámbar", "Musk", "Maderas"]
+},
+"bade'e al oud amethyst": {
+  family: "Ámbar especiado",
+  top: ["Pimienta rosa", "Bergamota"],
+  mid: ["Rosa", "Iris"],
+  base: ["Ámbar", "Oud", "Vainilla"]
+},
+"asad": {
+  family: "Ambarado especiado",
+  top: ["Bergamota", "Pimienta negra"],
+  mid: ["Lavanda", "Cardamomo"],
+  base: ["Ámbar", "Maderas"]
+},
+"asad bourbon": {
+  family: "Amaderado dulce",
+  top: ["Whisky Bourbon", "Canela"],
+  mid: ["Vainilla", "Praliné"],
+  base: ["Ámbar", "Maderas"]
+},
+"asad zanzibar": {
+  family: "Amaderado especiado",
+  top: ["Cítricos", "Pimienta"],
+  mid: ["Lavanda", "Rosa"],
+  base: ["Maderas", "Ámbar"]
+},
+"vintage radio": {
+  family: "Ambarado aromático",
+  top: ["Bergamota", "Limón"],
+  mid: ["Lavanda", "Iris"],
+  base: ["Ámbar", "Maderas", "Musk"]
+},
+"emeer": {
+  family: "Ámbar amaderado",
+  top: ["Cítricos", "Especias"],
+  mid: ["Rosa", "Jazmín"],
+  base: ["Maderas", "Ámbar", "Musk"]
+},
+"shaheen gold": {
+  family: "Ambarado especiado",
+  top: ["Pimienta negra", "Bergamota"],
+  mid: ["Lavanda", "Cardamomo"],
+  base: ["Ámbar", "Maderas"]
+},
+
+
 // --- MAISON ALHAMBRA ---
 "salvo intense": {
   family: "Aromático amaderado",
@@ -956,6 +1283,31 @@ const NOTES = {
   base: ["Vainilla", "Ámbar", "Musk"]
 },
 
+//FRENCH AVENUE
+"royal blend nero": {
+  family: "Amaderado especiado",
+  top: ["Toronja", "Pimienta negra"],
+  mid: ["Lavanda", "Geranio"],
+  base: ["Cedro", "Patchouli", "Maderas"]
+},
+"spectre ghost": {
+  family: "Aromático fresco",
+  top: ["Menta", "Limón"],
+  mid: ["Jengibre", "Cardamomo"],
+  base: ["Vetiver", "Ámbar gris", "Musk"]
+},
+"vulcan feu": {
+  family: "Ambarado cálido",
+  top: ["Naranja", "Especias"],
+  mid: ["Ámbar", "Resinas"],
+  base: ["Cuero", "Maderas ahumadas", "Incienso"]
+},
+"liquid brun": {
+  family: "Oriental ambarado",
+  top: ["Mandarina", "Canela"],
+  mid: ["Ámbar", "Vainilla"],
+  base: ["Maderas preciosas", "Almizcle", "Cuero"]
+},
 
 };
 
@@ -968,7 +1320,7 @@ window.PRODUCTS = RAW.map(r => {
     id: slug(`${r.brand} ${r.name}`),
     name: r.name,
     brand: r.brand,
-    family: extra.family || "",                 // familia real si la definiste
+    family: extra.family || "",                 
     gender: "Unisex",
     concentration: "EDP",
     price_ars: toARS(r.usd),
