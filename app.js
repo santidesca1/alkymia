@@ -87,6 +87,8 @@ function render(){ $("#grid").innerHTML = filterProducts().map(card).join(""); }
 function scrollToCatalogTop(){
   const el = document.getElementById("catalogo") || document.body;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.scrollTo({ top: document.querySelector("#catalogo").offsetTop - 80, behavior: "smooth" });
+
 }
 
 function bind(){
