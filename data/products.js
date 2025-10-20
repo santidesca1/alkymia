@@ -1,6 +1,6 @@
 // data/products.js
 // Conversión y helpers
-const USD_TO_ARS = 1500;
+const USD_TO_ARS = 1620;
 const MARGIN = 1.50;
 // Redondea hacia arriba al múltiplo de 1000 más cercano
 const toARS = usd => {
